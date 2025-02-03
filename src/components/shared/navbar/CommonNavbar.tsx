@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input,  Navbar,  NavbarContent,   NavbarItem,   NavbarMenuToggle,  NavbarMenu, Avatar, NavbarBrand, } from "@heroui/react";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input,  Navbar,  NavbarContent,   NavbarItem,   NavbarMenuToggle,  NavbarMenu, Avatar, } from "@heroui/react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -47,23 +47,33 @@ const manu= <>
 
         <DropdownMenu aria-label="Static Actions">
             <DropdownItem key="components">
-                Components
+                <Link color="foreground" href="#">
+                    Components
+                </Link>
             </DropdownItem>
 
             <DropdownItem key="onsale">
-                On Sale
+                <Link color="foreground" href="#">
+                    On Sale
+                </Link>
             </DropdownItem>
 
             <DropdownItem key="toolsequepment">
-                Tools & Equepment
+                <Link color="foreground" href="#">
+                    Tools & Equepment
+                </Link>
             </DropdownItem>
 
             <DropdownItem key="robotsparts">
-                Robots & Parts
+                <Link color="foreground" href="#">
+                    Robots & Parts
+                </Link>
             </DropdownItem>
 
             <DropdownItem key="robotkits">
-                Robot Kits
+                <Link color="foreground" href="#">
+                    Robot Kits
+                </Link>
             </DropdownItem>
         </DropdownMenu>
     </Dropdown>
@@ -104,131 +114,104 @@ const CommonNavbar = () => {
     const user = false
     
     return (
-        <div>
-            <div className=" w-full max-w-[1536px] mx-auto px-6 py-1 md:flex  justify-between " >
-                <div className=" w-fit mx-auto md:mx-0">
-                    <p>
-                        +88 01828 004746 | mrjabir229@gmail.com
-                    </p>
-                </div>
-
-                <div className=" w-fit mx-auto md:mx-0 flex gap-2">
-                    <p>
-                        f
-                    </p>
-
-                    <p>
-                        Y
-                    </p>
-                </div>
-
-            </div>
-
-            <div className="border-t-1 flex justify-center p-2">
-                <AcmeLogo />
-            </div>
-
-            <Navbar shouldHideOnScroll onMenuOpenChange={setIsMenuOpen} className="border bg-blue-200" maxWidth="2xl">
+                    <Navbar shouldHideOnScroll onMenuOpenChange={setIsMenuOpen} className="border bg-blue-200" maxWidth="2xl">
 
 
-                <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="lg:hidden"/>
-
-                <NavbarMenu className="z-50 top-0">
-                    <NavbarItem>
-                        <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="lg:hidden py-4"/>
-                    </NavbarItem>
-
-                    {manu}
-                </NavbarMenu>
-
-
-
-                <NavbarContent className="hidden lg:flex gap-4" justify="center">
-                    {manu}
-                </NavbarContent>
-
-                <NavbarContent justify="end">
-                    <Input
-                        classNames={{
-                            base: "max-w-[14rem] h-10",
-                            mainWrapper: "h-full",
-                            input: "text-small",
-                            inputWrapper:
-                            "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-                        }}
-                        placeholder="Type to search..."
-                        size="sm"
-                        startContent={<SearchIcon />}
-                        type="search"
-                    />
-
-                    <NavbarItem className="">
-                        <Link href="#">
-                            <CartIcon/>
-                        </Link>
-                    </NavbarItem>
-
-                    <Dropdown placement="bottom-end">
-                        <DropdownTrigger>
-                            {
-                                user ? 
-                                <Avatar
-                                isBordered
-                                as="button"
-                                className="transition-transform"
-                                color="secondary"
-                                name="Jason Hughes"
-                                size="sm"
-                                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                                /> :
-                                <Avatar
-                                isBordered
-                                showFallback
-                                as="button"
-                                className="transition-transform"
-                                size="sm"
-                                src="https://images.unsplash.com/broken"
-                                />
-                            }
-                            
-                        </DropdownTrigger>
-            
-                        <DropdownMenu aria-label="Profile Actions" variant="flat">
-                            {
-                                user ?
-                                <>
-                                    <DropdownItem key="profile" className="h-14 gap-2">
-                                        <p className="font-semibold">Signed in as</p>
-                                        <p className="font-semibold">zoey@example.com</p>
-                                    </DropdownItem>
-
-                                    <DropdownItem key="profile">
-                                        Profile
-                                    </DropdownItem>
-                                    <DropdownItem key="settings">
-                                        Settings
-                                    </DropdownItem>
-                                    <DropdownItem key="logout" >
-                                        Log Out
-                                    </DropdownItem>
-                                </> :
-                                <>
-                                    <DropdownItem key="login" color="danger">
-                                        Log In
-                                    </DropdownItem>
-
-                                    <DropdownItem key="signup" color="danger">
-                                        Sign Up
-                                    </DropdownItem>
-                                </> 
-                            }
-                        </DropdownMenu>
-                    </Dropdown>
-                </NavbarContent>
-
-
-            </Navbar>
-        </div>
+                    <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="lg:hidden"/>
+    
+                    <NavbarMenu className="z-50 top-0">
+                        <NavbarItem>
+                            <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="lg:hidden py-4"/>
+                        </NavbarItem>
+    
+                        {manu}
+                    </NavbarMenu>
+    
+    
+    
+                    <NavbarContent className="hidden lg:flex gap-4" justify="center">
+                        {manu}
+                    </NavbarContent>
+    
+                    <NavbarContent justify="end">
+                        <Input
+                            classNames={{
+                                base: "max-w-[14rem] h-10",
+                                mainWrapper: "h-full",
+                                input: "text-small",
+                                inputWrapper:
+                                "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+                            }}
+                            placeholder="Type to search..."
+                            size="sm"
+                            startContent={<SearchIcon />}
+                            type="search"
+                        />
+    
+                        <NavbarItem className="">
+                            <Link href="#">
+                                <CartIcon/>
+                            </Link>
+                        </NavbarItem>
+    
+                        <Dropdown placement="bottom-end">
+                            <DropdownTrigger>
+                                {
+                                    user ? 
+                                    <Avatar
+                                    isBordered
+                                    as="button"
+                                    className="transition-transform"
+                                    color="secondary"
+                                    name="Jason Hughes"
+                                    size="sm"
+                                    src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                                    /> :
+                                    <Avatar
+                                    isBordered
+                                    showFallback
+                                    as="button"
+                                    className="transition-transform"
+                                    size="sm"
+                                    src="https://images.unsplash.com/broken"
+                                    />
+                                }
+                                
+                            </DropdownTrigger>
+                
+                            <DropdownMenu aria-label="Profile Actions" variant="flat">
+                                {
+                                    user ?
+                                    <>
+                                        <DropdownItem key="profile" className="h-14 gap-2">
+                                            <p className="font-semibold">Signed in as</p>
+                                            <p className="font-semibold">zoey@example.com</p>
+                                        </DropdownItem>
+    
+                                        <DropdownItem key="profile">
+                                            Profile
+                                        </DropdownItem>
+                                        <DropdownItem key="settings">
+                                            Settings
+                                        </DropdownItem>
+                                        <DropdownItem key="logout" >
+                                            Log Out
+                                        </DropdownItem>
+                                    </> :
+                                    <>
+                                        <DropdownItem key="login" color="danger">
+                                            Log In
+                                        </DropdownItem>
+    
+                                        <DropdownItem key="signup" color="danger">
+                                            Sign Up
+                                        </DropdownItem>
+                                    </> 
+                                }
+                            </DropdownMenu>
+                        </Dropdown>
+                    </NavbarContent>
+                </Navbar>
     );
 };
 

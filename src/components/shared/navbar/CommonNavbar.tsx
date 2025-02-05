@@ -3,14 +3,8 @@
 import { useState } from "react";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input,  Navbar,  NavbarContent,   NavbarItem,   NavbarMenuToggle,  NavbarMenu, Avatar, } from "@heroui/react";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 
-
-export const AcmeLogo = () => {
-    return (
-        <Image src="https://dishantech.com/wp-content/uploads/2023/08/Dishan-Tech-300-x-84.png" alt="Dishan Tech" width={300} height={80}/>
-    );
-};
 
 export const CartIcon = () => {
     return (

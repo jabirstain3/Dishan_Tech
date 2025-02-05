@@ -2,12 +2,15 @@ import CommonFooter from "@/components/shared/footer/CommonFooter";
 import CommonNavbar from "@/components/shared/navbar/CommonNavbar";
 import Image from "next/image";
 
+export const TheLogo = () => {
+    return (
+        <Image src="https://dishantech.com/wp-content/uploads/2023/08/Dishan-Tech-300-x-84.png" alt="Dishan Tech" width={300} height={80}/>
+    );
+};
 
 const layout = ({ children, }: Readonly<{ children: React.ReactNode; }>) => {
     return (
         <div>
-
-
             {/* top navbar */}
             <div>
                 <div className=" w-full max-w-[1536px] mx-auto px-6 py-1 md:flex  justify-between text-sm" >
@@ -30,7 +33,7 @@ const layout = ({ children, }: Readonly<{ children: React.ReactNode; }>) => {
                 </div>
 
                 <div className="border-t-1 flex justify-center p-2">
-                    <Image src="https://dishantech.com/wp-content/uploads/2023/08/Dishan-Tech-300-x-84.png" alt="Dishan Tech" width={300} height={80}/>
+                    <TheLogo/>
                 </div>
             </div>
 

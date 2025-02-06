@@ -1,5 +1,8 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const TheLogo = () => {
     return (
@@ -8,6 +11,8 @@ export const TheLogo = () => {
 };
 
 const CommonFooter = () => {
+    const pathname = usePathname();
+
     return (
         <footer className=" w-full max-w-[1536px] mx-auto px-5 py-10 lg:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 justify-items-start lg:justify-items-center">
             <aside className=" w-fit">
@@ -20,28 +25,28 @@ const CommonFooter = () => {
             <nav className=" w-40 font-medium text-lg grid grid-cols-1 gap-1">
                 <h6 className="mb-2 font-semibold text-xl ">Services</h6>
 
-                <Link className="hover:text-scnd active:text-scnd" href="#">Shop</Link> 
-                <Link className="hover:text-scnd active:text-scnd" href="#">Upcoming</Link> 
-                <Link className="hover:text-scnd active:text-scnd" href="#">Project</Link> 
-                <Link className="hover:text-scnd active:text-scnd" href="#">lab</Link> 
+                <Link className={`navigationlink ${pathname === "/products" ? "activelink" : ""} `} href="/products">Shop</Link> 
+                <Link className={`navigationlink  `} href="">Upcoming</Link> 
+                <Link className={`navigationlink  `} href="#">Project</Link> 
+                <Link className={`navigationlink  `} href="#">lab</Link> 
             </nav>
 
             <nav className=" w-40 font-medium text-lg grid grid-cols-1 gap-1">
                 <h6 className="mb-2 font-semibold text-xl">Company</h6>
 
-                <Link className="hover:text-scnd active:text-scnd" href="">About Us</Link> 
-                <Link className="hover:text-scnd active:text-scnd" href="">Contact Us</Link> 
-                <Link className="hover:text-scnd active:text-scnd" href="">Support</Link> 
-                <Link className="hover:text-scnd active:text-scnd" href="">Community</Link> 
+                <Link className={`navigationlink ${pathname === "/about_us" ? "activelink" : ""}`} href="/about_us">About Us</Link> 
+                <Link className={`navigationlink ${pathname === "/contact" ? "activelink" : ""}`} href="/contact">Contact Us</Link> 
+                <Link className={`navigationlink ${pathname === "/support" ? "activelink" : ""}`} href="/support">Support</Link> 
+                <Link className={`navigationlink ${pathname === "/community" ? "activelink" : ""}`} href="/community">Community</Link> 
             </nav>
 
             <nav className=" w-40 font-medium text-lg grid grid-cols-1 gap-1">
                 <h6 className="mb-2  font-semibold text-xl ">Legal</h6>
 
-                <Link className="hover:text-scnd active:text-scnd" href="/termsofservice">Terms of service</Link> 
-                <Link className="hover:text-scnd active:text-scnd" href="/termsofservice">Terms of return</Link> 
-                <Link className="hover:text-scnd active:text-scnd" href="/privacypolicy">Privacy & policy</Link> 
-                <Link className="hover:text-scnd active:text-scnd" href="#">Cookie policy</Link> 
+                <Link className={`navigationlink ${pathname === "/terms_of_service" ? "activelink" : ""}`} href="/terms_of_service">Terms of service</Link> 
+                <Link className={`navigationlink `} href="/">Terms of return</Link> 
+                <Link className={`navigationlink ${pathname === "/privacy_&_policy" ? "activelink" : ""}`} href="/privacy_&_policy">Privacy & policy</Link> 
+                <Link className={`navigationlink ${pathname === "/cookie_policy" ? "activelink" : ""}`} href="/cookie_policy">Cookie policy</Link> 
             </nav>
         </footer>
     );

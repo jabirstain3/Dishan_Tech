@@ -3,7 +3,10 @@
 import { useState } from "react";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input,  Navbar,  NavbarContent,   NavbarItem,   NavbarMenuToggle,  NavbarMenu, Avatar, } from "@heroui/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 // import Image from "next/image";
+
 
 
 export const CartIcon = () => {
@@ -22,190 +25,136 @@ export const SearchIcon = () => {
     );
 };
 
-const manu= <>
-    <NavbarItem>
-        <Link color="foreground" href="#" className="">
-            Home
-        </Link>
-    </NavbarItem>
-
-    <Dropdown placement="bottom-start">
-        <NavbarItem >
-            <DropdownTrigger>
-                {/* <Button disableRipple className="border p-0 bg-transparent data-[hover=true]:bg-transparent">Shop</Button> */}
-                <Link color="foreground" href="#">
-                    Shop
-                </Link>
-            </DropdownTrigger>
-        </NavbarItem>
-
-        <DropdownMenu aria-label="Static Actions">
-            <DropdownItem key="components">
-                <Link color="foreground" href="#">
-                    Components
-                </Link>
-            </DropdownItem>
-
-            <DropdownItem key="onsale">
-                <Link color="foreground" href="#">
-                    On Sale
-                </Link>
-            </DropdownItem>
-
-            <DropdownItem key="toolsequepment">
-                <Link color="foreground" href="#">
-                    Tools & Equepment
-                </Link>
-            </DropdownItem>
-
-            <DropdownItem key="robotsparts">
-                <Link color="foreground" href="#">
-                    Robots & Parts
-                </Link>
-            </DropdownItem>
-
-            <DropdownItem key="robotkits">
-                <Link color="foreground" href="#">
-                    Robot Kits
-                </Link>
-            </DropdownItem>
-        </DropdownMenu>
-    </Dropdown>
-
-    <NavbarItem>
-        <Link color="foreground" href="#">
-            Services
-        </Link>
-    </NavbarItem>
-
-    <NavbarItem>
-        <Link color="foreground" href="#">
-            About
-        </Link>
-    </NavbarItem>
-
-    <NavbarItem>
-        <Link color="foreground" href="#">
-            Contact
-        </Link>
-    </NavbarItem>
-
-    <NavbarItem>
-        <Link color="foreground" href="#">
-            Support
-        </Link>
-    </NavbarItem>
-
-    <NavbarItem>
-        <Link color="foreground" href="#">
-            Community
-        </Link>
-    </NavbarItem>
-</>
-
 const CommonNavbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const user = false
+    const pathname = usePathname();
+
+    const manu= <>
+        <NavbarItem>
+            <Link className={`navigationlink ${pathname === "/" ? "activelink" : ""}`} color="foreground" href="/" >
+                Home
+            </Link>
+        </NavbarItem>
+
+        <NavbarItem>
+            <Link className={`navigationlink ${pathname === "/products" ? "activelink" : ""} `} href="/products">
+            Shop
+            </Link>
+        </NavbarItem>
+
+        <NavbarItem>
+            <Link className={`navigationlink ${pathname === "/services" ? "activelink" : ""}`}  href="/services">
+                Services
+            </Link>
+        </NavbarItem>
+
+        <NavbarItem>
+            <Link className={`navigationlink ${pathname === "/about_us" ? "activelink" : ""}`}  href="/about_us">
+                About Us
+            </Link>
+        </NavbarItem>
+
+        <NavbarItem>
+            <Link className={`navigationlink ${pathname === "/contact" ? "activelink" : ""}`}  href="/contact">
+                Contact Us
+            </Link>
+        </NavbarItem>
+
+        <NavbarItem>
+            <Link className={`navigationlink ${pathname === "/support" ? "activelink" : ""}`}  href="/support">
+                Support
+            </Link>
+        </NavbarItem>
+
+        <NavbarItem>
+            <Link className={`navigationlink ${pathname === "/community" ? "activelink" : ""}`} href="/community">
+                Community
+            </Link>
+        </NavbarItem>
+    </>
+    
     
     return (
-                    <Navbar shouldHideOnScroll onMenuOpenChange={setIsMenuOpen} className="border bg-blue-200" maxWidth="2xl">
+        <Navbar shouldHideOnScroll onMenuOpenChange={setIsMenuOpen} className="border bg-blue-200" maxWidth="2xl">
 
+            <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="lg:hidden"/>
+    
+            <NavbarMenu className="z-50 top-0">
+                <NavbarItem>
+                    <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="lg:hidden py-4"/>
+                </NavbarItem>
 
-                    <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="lg:hidden"/>
+                {manu}
+            </NavbarMenu>
     
-                    <NavbarMenu className="z-50 top-0">
-                        <NavbarItem>
-                            <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="lg:hidden py-4"/>
-                        </NavbarItem>
+            <NavbarContent className="hidden lg:flex gap-4" justify="center">
+                {manu}
+            </NavbarContent>
     
-                        {manu}
-                    </NavbarMenu>
-    
-    
-    
-                    <NavbarContent className="hidden lg:flex gap-4" justify="center">
-                        {manu}
-                    </NavbarContent>
-    
-                    <NavbarContent justify="end">
-                        <Input
-                            classNames={{
-                                base: "max-w-[14rem] h-10",
-                                mainWrapper: "h-full",
-                                input: "text-small",
-                                inputWrapper:
-                                "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-                            }}
-                            placeholder="Type to search..."
-                            size="sm"
-                            startContent={<SearchIcon />}
-                            type="search"
-                        />
-    
-                        <NavbarItem className="">
-                            <Link href="#">
-                                <CartIcon/>
-                            </Link>
-                        </NavbarItem>
-    
-                        <Dropdown placement="bottom-end">
-                            <DropdownTrigger>
-                                {
-                                    user ? 
-                                    <Avatar
-                                    isBordered
-                                    as="button"
-                                    className="transition-transform"
-                                    color="secondary"
-                                    name="Jason Hughes"
-                                    size="sm"
-                                    src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                                    /> :
-                                    <Avatar
-                                    isBordered
-                                    showFallback
-                                    as="button"
-                                    className="transition-transform"
-                                    size="sm"
-                                    src="https://images.unsplash.com/broken"
-                                    />
-                                }
-                                
-                            </DropdownTrigger>
-                
-                            <DropdownMenu aria-label="Profile Actions" variant="flat">
-                                {
-                                    user ?
-                                    <>
-                                        <DropdownItem key="profile" className="h-14 gap-2">
-                                            <p className="font-semibold">Signed in as</p>
-                                            <p className="font-semibold">zoey@example.com</p>
-                                        </DropdownItem>
-    
-                                        <DropdownItem key="profile">
-                                            Profile
-                                        </DropdownItem>
-                                        <DropdownItem key="settings">
-                                            Settings
-                                        </DropdownItem>
-                                        <DropdownItem key="logout" >
-                                            Log Out
-                                        </DropdownItem>
-                                    </> :
-                                    <>
-                                        <DropdownItem key="login" color="danger">
-                                            Log In
-                                        </DropdownItem>
-    
-                                        <DropdownItem key="signup" color="danger">
-                                            Sign Up
-                                        </DropdownItem>
-                                    </> 
-                                }
-                            </DropdownMenu>
-                        </Dropdown>
-                    </NavbarContent>
-                </Navbar>
+            <NavbarContent justify="end">
+                <Input
+                    classNames={{
+                        base: "max-w-[14rem] h-10",
+                        mainWrapper: "h-full",
+                        input: "text-small",
+                        inputWrapper:
+                        "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+                    }}
+                    placeholder="Type to search..."
+                    size="sm"
+                    startContent={<SearchIcon />}
+                    type="search"
+                />
+
+                <NavbarItem className="">
+                    <Link className={`navigationlink ${pathname === "/cart" ? "activelink" : ""}`} href="#">
+                        <CartIcon/>
+                    </Link>
+                </NavbarItem>
+
+                <Dropdown placement="bottom-end">
+                    <DropdownTrigger>
+                        {
+                            user ? 
+                            <Avatar isBordered as="button" className="transition-transform" color="secondary" name="Jason Hughes" size="sm" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" /> :
+                            <Avatar isBordered showFallback as="button" className="transition-transform" size="sm" src="https://images.unsplash.com/broken" />
+                        }
+                    </DropdownTrigger>
+        
+                    <DropdownMenu aria-label="Profile Actions" variant="flat" >
+                        {
+                            user ?
+                            <>
+                                <DropdownItem key="profile" className="h-14 gap-2">
+                                    <p className="font-semibold">Signed in as</p>
+                                    <p className="font-semibold">zoey@example.com</p>
+                                </DropdownItem>
+
+                                <DropdownItem key="profile">
+                                    Profile
+                                </DropdownItem>
+                                <DropdownItem key="settings">
+                                    Settings
+                                </DropdownItem>
+                                <DropdownItem key="logout" >
+                                    Log Out
+                                </DropdownItem>
+                            </> :
+                            <>
+                                <DropdownItem key="login" >
+                                    <Link className={`navigationlink `} href="/login">Log In</Link>
+                                </DropdownItem>
+
+                                <DropdownItem key="signup" >
+                                    <Link className={`navigationlink `} href="/registration">Sign Up</Link>                                    
+                                </DropdownItem>
+                            </> 
+                        }
+                    </DropdownMenu>
+                </Dropdown>
+            </NavbarContent>
+        </Navbar>
     );
 };
 
